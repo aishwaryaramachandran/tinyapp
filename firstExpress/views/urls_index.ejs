@@ -1,0 +1,16 @@
+<html lang="en">
+<head>
+<title>Tiny App</title>
+</head>
+<body>
+<ul>
+<%- include('partials/_header') %>
+ <% Object.keys(urls).forEach(function(key){ %>
+
+  <li> <%= key %>  - <%= urls[key] %> </li>
+
+<% }) %>
+
+</ul>
+</body>
+</html>
