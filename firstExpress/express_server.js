@@ -5,18 +5,13 @@ var PORT = process.env.PORT || 8080;
 app.set("view engine", "ejs");
 
 
-function generateRandomString() {
-    var text = " ";
-
-    var charset = "abcdefghijklmnopqrstuvwxyz0123456789";
-
-    for( var i=0; i < 6; i++ )
-        text += charset.charAt(Math.floor(Math.random() * charset.length));
-
-    return text;
+function generateRandomString(length, chars) {
+    var result = '';
+    for (var i = length; i > 0; --i) {
+      result += chars[Math.round(Math.random() * (chars.length - 1))];
+    }
+    return result;
 }
-
-
 
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({extended: true}));
@@ -33,7 +28,7 @@ app.get("/urls/new", (req, res) => {
 });
 
 app.post("/urls", (req, res) => {
-  var shortURL = generateRandomString();
+  var shortURL = generateRandomString(6, "abcdefghijklmnopqrstuvwxyz0123456789");
   var longURL = req.body.longURL;
   urlDatabase[shortURL] = longURL;
 
@@ -78,6 +73,8 @@ app.get("/urls.json", (req, res) => {
 app.listen(PORT, function(){
   console.log("Example app listening on port" + PORT);
 });
+
+
 
 
 
