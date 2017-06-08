@@ -3,12 +3,18 @@
 <title>Tiny App</title>
 </head>
 <body>
-<ul>
 <%- include('partials/_header') %>
 
  <% Object.keys(urls).forEach(function(key){ %>
 
-  <li> <%= key %>  - <%= urls[key] %> </li>
+  <h3> <%= key %>  - <%= urls[key] %>
+
+<form method="POST" action="/urls/<%= key %>/delete">
+
+<input type = "submit" value = "Delete">
+</form>
+<a href = '/urls/<%= key %>'> Edit </a>
+</h3>
 
 <% }) %>
 

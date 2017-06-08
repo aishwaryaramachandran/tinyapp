@@ -1,0 +1,322 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"av",
+				"avatar_url"
+			],
+			[
+				"totalSales",
+				"totalSalesTaxT"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "install",
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"side",
+				"View: Toggle Side Bar"
+			],
+			[
+				"sideb",
+				"View: Toggle Side Bar"
+			],
+			[
+				"javas",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"mark",
+				"Set Syntax: Markdown"
+			],
+			[
+				"java",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"markd",
+				"Set Syntax: Markdown"
+			]
+		],
+		"width": 442.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/kumar/lighthouse/Lecture 8",
+		"/Users/kumar/lighthouse/tinyApp/firstExpress/views/partials/_header.ejs",
+		"/Users/kumar/lighthouse/tinyApp/firstExpress/views/urls_show.ejs",
+		"/Users/kumar/lighthouse/tinyApp/firstExpress/views/urls_new.ejs",
+		"/Users/kumar/lighthouse/tinyApp/firstExpress/views/urls_index.ejs",
+		"/Users/kumar/lighthouse/tinyApp/firstExpress/express_server.js",
+		"/Users/kumar/lighthouse/firstExpress/package.json",
+		"/Users/kumar/lighthouse/firstExpress/express_server.js",
+		"/Users/kumar/lighthouse/Lecture 7",
+		"/Users/kumar/lighthouse/github-avatar-downloader/avatar_test.js",
+		"/Users/kumar/lighthouse/github-avatar-downloader/downloadImg.js",
+		"/Users/kumar/lighthouse/github-avatar-downloader/download_avatars.js",
+		"/Users/kumar/lighthouse/week2day1/requestPackage/usingRequest.js",
+		"/Users/kumar/lighthouse/github-avatar-downloader/README.md",
+		"/Users/kumar/lighthouse/week2day1/scriptingHTTP/anotherFile.js",
+		"/Users/kumar/lighthouse/week2day1/scriptingHTTP/printCallback.js",
+		"/Users/kumar/lighthouse/week2day1/scriptingHTTP/printModular.js",
+		"/Users/kumar/lighthouse/week2day1/scriptingHTTP/printChunks.js",
+		"/Users/kumar/lighthouse/node-blog/Lecture 6",
+		"/Users/kumar/lighthouse/node-blog/views/partials/navbar.ejs",
+		"/Users/kumar/lighthouse/week1day6/read_file.js",
+		"/Users/kumar/lighthouse/week1day6/main.js",
+		"/Users/kumar/lighthouse/week1day6/test_sync.txt",
+		"/Users/kumar/lighthouse/week1day5/assessment-exam-student/answers/01.js",
+		"/Users/kumar/lighthouse/week1day5/assessment-exam-student/answers/03.js",
+		"/Users/kumar/lighthouse/week1day5/assessment-exam-student/answers/02.js",
+		"/Users/kumar/lighthouse/week1day4/usingclosures/loggingwrapper.js",
+		"/Users/kumar/lighthouse/week1day5/luhnAlgorithm/test/test.js",
+		"/Users/kumar/lighthouse/week1day5/luhnAlgorithm/luhnAlgorithm.js",
+		"/Users/kumar/lighthouse/workingDir/index.js",
+		"/Users/kumar/lighthouse/week1day5/requiringModules/requiredFile.js",
+		"/Users/kumar/lighthouse/Lecture 5",
+		"/Users/kumar/lighthouse/week1day4/usingclosures/countDownGen.js",
+		"/Users/kumar/lighthouse/week1day4/usingclosures/loadedDie.js",
+		"/Users/kumar/lighthouse/week1day4/callbacksMap/mapper.js",
+		"/Users/kumar/lighthouse/week1day4/arrayMapping/pythagorean.js",
+		"/Users/kumar/lighthouse/week1day4/advancedSorting/nameAndAge.js",
+		"/Users/kumar/lighthouse/Lecture 4",
+		"/Users/kumar/lighthouse/week1day3/charactercounting/objectpractice.js",
+		"/Users/kumar/lighthouse/week1day3/charactercounting/indiceCounting.js",
+		"/Users/kumar/lighthouse/week1day3/charactercounting/charactercounting.js",
+		"/Users/kumar/lighthouse/lecture3.txt",
+		"/Users/kumar/boilerplate/buttons.css",
+		"/Users/kumar/lighthouse/test.js",
+		"/Users/kumar/lighthouse/week1day2/debugging2/day-calculator.js",
+		"/Users/kumar/lighthouse/week2day2/debugging2/day-calculator.js",
+		"/Users/kumar/lighthouse/week2day2/print_in_frame/print-in-frame.js",
+		"/Users/kumar/lighthouse/week2day2/debugging/piglatin1.js",
+		"/Users/kumar/lighthouse/week2day2/debugging/PigLatin1",
+		"/Users/kumar/lighthouse/week1day1/concepts/concepts.js",
+		"/Users/kumar/lighthouse/week1day1/passwords/password.js",
+		"/Users/kumar/lighthouse/week1day1/piglatin/piglatin.js",
+		"/Users/kumar/lighthouse/week1day1/reverse/reverse.js",
+		"/Users/kumar/lighthouse/styles-conference/index.html",
+		"/Users/kumar/lighthouse/styles-conference/assets/stylesheets/main.css",
+		"/Users/kumar/lighthouse/javascripting/functions.js",
+		"/Users/kumar/lighthouse/javascripting/object-properties.js",
+		"/Users/kumar/lighthouse/lighthouse-js-fundamentals/loopyLighthouse2.js",
+		"/Users/kumar/lighthouse/lighthouse-js-fundamentals/loopyLighthouse.js",
+		"/Users/kumar/lighthouse/lighthouse-js-fundamentals/ingredients.js",
+		"/Users/kumar/lighthouse/lighthouse-js-fundamentals/chorus-for.js",
+		"/Users/kumar/lighthouse/lighthouse-js-fundamentals/chorus-while.js",
+		"/Users/kumar/lighthouse/lighthouse-js-fundamentals/go-outside.js",
+		"/Users/kumar/lighthouse/lighthouse-js-fundamentals/logicaloperators.js",
+		"/Users/kumar/lighthouse/lighthouse-js-fundamentals/odd.js",
+		"/Users/kumar/lighthouse/lighthouse-js-fundamentals/hello.js",
+		"/Users/kumar/lighthouse/samplefile.txt",
+		"/Users/kumar/lighthouse/add-aishwaryaramachandran.txt",
+		"/Users/kumar/lighthouse/readme.txt",
+		"/Users/kumar/lighthouse/javascripting/looping-through-arrays.js",
+		"/Users/kumar/lighthouse/javascripting/accessing-array-values.js",
+		"/Users/kumar/lighthouse/javascripting/arrays.js",
+		"/Users/kumar/lighthouse/javascripting/array-filtering.js",
+		"/Users/kumar/lighthouse/javascripting/string-length.js",
+		"/Users/kumar/lighthouse/javascripting/for-loop.js",
+		"/Users/kumar/lighthouse/javascripting/if-statement.js",
+		"/Users/kumar/lighthouse/javascripting/number-to-string.js",
+		"/Users/kumar/lighthouse/javascripting/rounding-numbers.js",
+		"/Users/kumar/lighthouse/javascripting/numbers.js",
+		"/Users/kumar/lighthouse/javascripting/revising-strings.js",
+		"/Users/kumar/lighthouse/javascripting/strings.js",
+		"/Users/kumar/lighthouse/javascripting/variable.js",
+		"/Users/kumar/lighthouse/javascripting/introduction.js",
+		"/Users/kumar/lighthouse/sublime-practice/song-2.txt",
+		"/Users/kumar/lighthouse/sublime-practice/song-1.txt",
+		"/Users/kumar/Downloads/export-bibtex-1491868202.bib",
+		"/Users/kumar/Documents/Untitled.java",
+		"/Users/kumar/lighthouse/git_basicss/db/development.sqlite3",
+		"/Users/kumar/lighthouse/git_basics/db/development.sqlite3",
+		"/Users/kumar/lighthouse/javascripting/variables.js",
+		"/Users/kumar/Downloads/Package Control (1).sublime-package",
+		"/Users/kumar/Library/Application Support/Sublime Text 3/Packages/User/song-2.txt",
+		"/Users/kumar/Library/Application Support/Sublime Text 3/Packages/User/song-1.txt",
+		"/Volumes/Sublime Text/song-2.txt"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"console.log",
+			"Dalton",
+			"name",
+			"  ",
+			"the",
+			"name",
+			"the",
+			" =",
+			"var",
+			"date",
+			"Date",
+			"date",
+			"Date",
+			"date",
+			"splitDate",
+			"border",
+			"var str",
+			"pigs",
+			"things"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "express_server.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"~/lighthouse/test.js"
+			],
+			[
+				"t",
+				"~/lighthouse/test.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
