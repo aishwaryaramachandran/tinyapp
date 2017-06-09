@@ -1,9 +1,15 @@
-var urlDatabase = {
-  "b2xVn2": "http://www.lighthouselabs.ca",
-  "9sm5xK": "http://www.google.com"
-};
+const users = {
+  "userID": {
+    id: "userID",
+    email: "user@example.com",
+    password: "purple-monkey-dinosaur"
+  },
+ "user2ID": {
+    id: "user2ID",
+    email: "user2@example.com",
+    password: "dishwasher-funk"
+  }
+}
 
 
-var deletedItem = Object.keys()
-
-console.log(Object.keys(urlDatabase));
+console.log(users['userID']);

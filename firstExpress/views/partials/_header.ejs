@@ -1,27 +1,16 @@
-<html>
-
-<body>
   <header>
   <a href = "http://localhost:8080/urls"> <b> Tiny App </b> </a>
   </header>
-    <% if (username) { %>
-    <%= username %>
+    <% if (user) { %>
+    <%= user.email %>
     <form method="POST" action= "/logout">
       <input type="submit" value="Logout">
      </form>
   <% } else { %>
-    <form method="Post" action="/login">
+  <a href = "http://localhost:8080/register"> Register </a>
 
-      <label for="username"> Enter a username: </label>
 
-      <input type="text" placeholder= "Enter Username" name="username" style="width:200px;">
-
-      <input type="submit" value="Login">
-
-    </form>
+  <a href = "http://localhost:8080/login"> Login </a>
   <% } %>
-</body>
-
-</html>
 
 

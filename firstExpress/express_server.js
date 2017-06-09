@@ -4,7 +4,6 @@ const PORT = process.env.PORT || 8080;
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 
-
 app.use(cookieParser());
 app.set("view engine", "ejs");
 
@@ -27,10 +26,51 @@ var urlDatabase = {
   "9sm5xK": "http://www.google.com"
 };
 
+
+const users = {
+  "userID": {
+    id: "userID",
+    email: "user@example.com",
+    password: "purple-monkey-dinosaur"
+  },
+ "user2ID": {
+    id: "user2ID",
+    email: "user2@example.com",
+    password: "dishwasher-funk"
+  }
+}
+
+// GET endpoint to register
+
+app.get("/register", (req, res) => {
+  res.render("register");
+});
+
+app.post("/register",(req, res)=> {
+
+  let email = req.body['email'];
+  let password = req.body['password'];
+  let id = generateRandomString(6, "abcdefghijklmnopqrstuvwxyz0123456789");
+  users[id] = {
+    id,
+    email,
+    password
+  };
+
+  if(email === '' || password === '') {
+
+    res.status(400).send('ERROR: Please enter a valid email and password');
+  }
+
+  res.cookie("user_id", id);
+  res.redirect("/urls");
+
+});
+
+
 app.get("/urls/new", (req, res) => {
 let templateVars = {
-
-  username: req.cookies["name"]
+  user: users[req.cookies["user_id"]]
 }
 
   res.render("urls_new", templateVars);
@@ -55,9 +95,9 @@ app.get("/u/:shortURL", (req, res) => {
 
 app.get("/urls", (req, res) => {
   let templateVars = {
-
-  username: req.cookies["name"],
-  urls: urlDatabase };
+    user: users[req.cookies["user_id"]],
+    urls: urlDatabase
+};
 
   res.render("urls_index", templateVars)
 });
@@ -66,15 +106,15 @@ app.get("/urls/:id", (req, res) => {
   let shortURL = req.params.id;
  let templateVars = {shortURL: shortURL,
                       longURL: urlDatabase[shortURL],
-                      username: req.cookies["name"]
+                      user: users[req.cookies["user_id"]]
 
   };
   res.render("urls_show", templateVars)
 });
 
 app.post("/urls/:id", (req, res) => {
-  var shortURL = generateRandomString(6, "abcdefghijklmnopqrstuvwxyz0123456789");
-  var longURL = req.body.longURL;
+  let shortURL = generateRandomString(6, "abcdefghijklmnopqrstuvwxyz0123456789");
+  let longURL = req.body.longURL;
   urlDatabase[shortURL] = longURL;
 
   console.log(req.body);
@@ -82,15 +122,37 @@ app.post("/urls/:id", (req, res) => {
 
 });
 
+app.get("/login", (req, res) => {
+  res.render("login");
+});
+
+function findUserByEmail(email){
+  return Object.keys(users).map((key) => users[key]).find((user) => user.email === email)
+
+}
 app.post("/login", (req, res) => {
-  let username = req.body.username;
-  res.cookie("name", username);
-  res.redirect("/urls");
+  let email = req.body.email;
+  let password = req.body.password;
+
+let user = findUserByEmail(email);
+
+if(!user){
+res.status(403).send('ERROR: Please register your email');
+     return;
+}
+if(user.password !== password){
+res.status(403).send('ERROR: Incorrect Password');
+    return;
+  }
+
+res.redirect("/");
+
+
 });
 
 app.post("/logout", (req, res) => {
-  res.clearCookie("name");
-  res.redirect("/urls");
+  res.clearCookie("user_id");
+  res.redirect("/login");
 });
 
 app.post("/urls/:id/delete", (req, res) => {
