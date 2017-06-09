@@ -1,15 +1,12 @@
-const users = {
-  "userID": {
-    id: "userID",
-    email: "user@example.com",
-    password: "purple-monkey-dinosaur"
-  },
- "user2ID": {
-    id: "user2ID",
-    email: "user2@example.com",
-    password: "dishwasher-funk"
-  }
-}
-
-
-console.log(users['userID']);
+var urlDatabase = {
+    "b2xVn2": {
+      id: "b2xVn2", // id = short url
+      longURL: "http://www.lighthouselabs.ca",
+      user_id: "userID"
+    },
+    "9sm5xK": {
+      id: "b2xVn2", // id = short url
+      longURL: "http://www.google.com",
+      user_id: "user2ID"
+    }
+};

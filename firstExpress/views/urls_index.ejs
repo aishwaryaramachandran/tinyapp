@@ -4,10 +4,11 @@
 </head>
 <body>
 <%- include('partials/_header') %>
+<% if(user){ %>
 
  <% Object.keys(urls).forEach(function(key){ %>
 
-  <h3> <%= key %>  - <%= urls[key] %>
+  <h3> <%= key %>  - <%= urls[key].longURL %>
 
 <form method="POST" action="/urls/<%= key %>/delete">
 
@@ -17,7 +18,9 @@
 </h3>
 
 <% }) %>
-
+ <% } else { %>
+  <h3> Please log in! </h3>
+ <%  } %>
 </ul>
 </body>
 </html>
