@@ -3,6 +3,7 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
+const bcrypt = require('bcrypt');
 
 app.use(cookieParser());
 app.set("view engine", "ejs");
@@ -48,7 +49,7 @@ const users = {
   }
 }
 
-// GET endpoint to register
+
 
 app.get("/register", (req, res) => {
   res.render("register");
@@ -57,12 +58,13 @@ app.get("/register", (req, res) => {
 app.post("/register",(req, res)=> {
 
   let email = req.body['email'];
-  let password = req.body['password'];
+  const password = req.body['password'];
+  const hashed_password = bcrypt.hashSync(password, 10);
   let id = generateRandomString(6, "abcdefghijklmnopqrstuvwxyz0123456789");
   users[id] = {
     id,
     email,
-    password
+    hashed_password
   };
 
   if(email === '' || password === '') {
@@ -75,6 +77,38 @@ app.post("/register",(req, res)=> {
 
 });
 
+app.get("/login", (req, res) => {
+  res.render("login");
+});
+
+function findUserByEmail(email){
+  return Object.keys(users).map((key) => users[key]).find((user) => user.email === email)
+}
+
+app.post("/login", (req, res) => {
+  let email = req.body.email;
+  let password = req.body.password;
+
+  let user = findUserByEmail(email);
+
+  if(!user){
+    res.status(403).send('ERROR: Please register your email');
+    return;
+  }
+  if(bcrypt.compareSync(password, user.hashed_password)){
+    res.cookie("user_id", user.id);
+  }else{
+  res.status(403).send('ERROR: Incorrect Password');
+    return;
+  }
+res.redirect("/urls");
+
+});
+
+app.post("/logout", (req, res) => {
+  res.clearCookie("user_id");
+  res.redirect("/login");
+});
 
 app.get("/urls/new", (req, res) => {
 let templateVars = {
@@ -145,9 +179,10 @@ app.get("/urls/:id", (req, res) => {
     res.status(403).send("Please log in to delete urls");
   }else if(urlDatabase[req.params.id] === undefined){
     res.status(404).send("Please log in or register to view URLS");
-  }else if(urlDatabase[req.params.id].user_id !== req.cookies.user_id){
-    res.status(404).send("You can only edit your URLS");
   }
+  // else if(urlDatabase[req.params.id].user_id !== req.cookies.user_id){
+  //   res.status(404).send("You can only edit your URLS");
+  // }
   else {
   res.render("urls_show", templateVars);
   }
@@ -163,40 +198,6 @@ app.post("/urls/:id", (req, res) => {
 
 });
 
-app.get("/login", (req, res) => {
-  res.render("login");
-});
-
-function findUserByEmail(email){
-  return Object.keys(users).map((key) => users[key]).find((user) => user.email === email)
-}
-
-app.post("/login", (req, res) => {
-  let email = req.body.email;
-  let password = req.body.password;
-
-  let user = findUserByEmail(email);
-
-  if(!user){
-    res.status(403).send('ERROR: Please register your email');
-    return;
-  }
-  if(user.password !== password){
-    res.status(403).send('ERROR: Incorrect Password');
-    return;
-    }
-  if (user) {
-      res.cookie("user_id", user.id);
-  }
-res.redirect("/urls");
-
-
-});
-
-app.post("/logout", (req, res) => {
-  res.clearCookie("user_id");
-  res.redirect("/login");
-});
 
 
 app.post("/urls/:id/delete", (req, res) => {
