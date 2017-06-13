@@ -1,26 +1,25 @@
 <html lang="en">
-<head>
-<title>Tiny App</title>
-</head>
-<body>
-<%- include('partials/_header') %>
-<% if(user){ %>
+  <head>
+    <title>Tiny App</title>
+  </head>
+  <body>
+    <%- include('partials/_header') %>
+    <% if(user){ %>
 
- <% Object.keys(urls).forEach(function(key){ %>
+    <% Object.keys(urls).forEach(function(key){ %>
 
-  <h3> <%= key %>  - <%= urls[key].longURL %>
+    <h3> <%= key %>  - <%= urls[key].longURL %>
 
-<form method="POST" action="/urls/<%= key %>/delete">
+      <form method="POST" action="/urls/<%= key %>/delete">
 
-<input type = "submit" value = "Delete">
-</form>
-<a href = '/urls/<%= key %>'> Edit </a>
-</h3>
-
-<% }) %>
- <% } else { %>
-  <h3> Please log in! </h3>
- <%  } %>
-</ul>
-</body>
+      <input type = "submit" value = "Delete">
+      </form>
+      <a href = '/urls/<%= key %>'> Edit </a>
+    </h3>
+    <% }) %>
+    <% } else { %>
+    <h3> Please log in! </h3>
+    <%  } %>
+    </ul>
+  </body>
 </html>
