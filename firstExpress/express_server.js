@@ -12,6 +12,9 @@ app.use(cookieSession({
 app.set("view engine", "ejs");
 
 
+//this generates a random string that will act as the short URL 'generated' in response
+//to a user submitting a long URL
+
 function generateRandomString(length, chars) {
   var result = '';
   for (var i = length; i > 0; --i) {
@@ -24,7 +27,7 @@ function generateRandomString(length, chars) {
 app.use(bodyParser.urlencoded({extended: true}));
 
 
-
+// 'database' object containing information about the URLs and the associated User's ID
 var urlDatabase = {
     "b2xVn2": {
       id: "b2xVn2",
@@ -38,6 +41,7 @@ var urlDatabase = {
     }
 };
 
+//'database' object of users who register or log back in to the application
 
 const users = {
   "userID": {
@@ -52,10 +56,15 @@ const users = {
   }
 }
 
-
+//renders registration template
 app.get("/register", (req, res) => {
   res.render("register");
 });
+
+//Posts to register page
+//user submitted email and password are added to users database
+//password is hashed
+//error generated if email or password fields are empty
 
 app.post("/register",(req, res)=> {
   let email = req.body['email'];
@@ -77,13 +86,20 @@ app.post("/register",(req, res)=> {
 
 });
 
+// renders login template -> Goes to login page
 app.get("/login", (req, res) => {
   res.render("login");
 });
 
+//identify if a user's inputted email matches any emails within the database
 function findUserByEmail(email){
   return Object.keys(users).map((key) => users[key]).find((user) => user.email === email)
 }
+
+//login permitted ONLY if user inputted email and password match the corresponding database items
+// IE: already existing user
+//Error generated if inputted email/password doesn't match existing email/password in db
+
 
 app.post("/login", (req, res) => {
   let email = req.body.email;
@@ -105,10 +121,16 @@ app.post("/login", (req, res) => {
 
 });
 
+//ends the cookie session generated during login
+//user redirected to login page
+
 app.post("/logout", (req, res) => {
   req.session = null;
   res.redirect("/login");
 });
+
+//renders template to submit long URLs to be converted
+//Permitted only if logged in, else redirected to login page
 
 app.get("/urls/new", (req, res) => {
   let templateVars = {
@@ -122,7 +144,7 @@ app.get("/urls/new", (req, res) => {
   }
 });
 
-
+//posts the longURL & corresponding short URL received from user and adds them to db
 app.post("/urls", (req, res) => {
   var shortURL = generateRandomString(6, "abcdefghijklmnopqrstuvwxyz0123456789");
   var longURL = req.body.longURL;
@@ -136,11 +158,17 @@ app.post("/urls", (req, res) => {
 
 });
 
+//redirects user to actual website when input is short URL
+
 app.get("/u/:shortURL", (req, res) => {
   var shortURL = req.params.shortURL;
   let longURL = urlDatabase[shortURL].longURL;
   res.redirect(longURL);
 });
+
+
+//function returns the subset of the URL database
+//that belongs to only the logged in user
 
 function urlsForUser(user_id){
   var results = {};
@@ -153,6 +181,8 @@ function urlsForUser(user_id){
   return results;
 }
 
+// renders a template of all URLs added and updated by a user
+// database is filtered to show only the current user's URLs
 
 app.get("/urls", (req, res) => {
 
@@ -165,6 +195,10 @@ app.get("/urls", (req, res) => {
   res.render("urls_index", templateVars);
 
 });
+
+//renders Update template and the user's short URL and corresponding URL
+//ONLY if user logged in is the same as the one who posted a URL to be shortened
+//Error generated if user has not logged in, or if user deletes a URL that has a different ID from theirs.
 
 app.get("/urls/:id", (req, res) => {
   let shortURL = req.params.id;
@@ -187,7 +221,9 @@ app.get("/urls/:id", (req, res) => {
   }
 });
 
-
+//Update request modifies longURL if user session is ongoing
+//Error: When user is not logged in and tries to access URL details
+//redirects the client back to "/urls".
 
 app.post("/urls/:id", (req, res) => {
   var userId = req.session.user_id;
@@ -205,6 +241,8 @@ app.post("/urls/:id", (req, res) => {
 });
 
 
+//removes a url from database
+//if it belongs to the user who posted it
 
 app.post("/urls/:id/delete", (req, res) => {
 
@@ -222,17 +260,17 @@ app.post("/urls/:id/delete", (req, res) => {
 
 });
 
-app.get("/hello", (req, res) => {
-  res.end("<html><body>Hello<b>World</b></body></html>")
-});
-
+//root page says 'hello'
 app.get("/", (req,res) => {
   res.end('Hello!');
 });
 
+
 app.get("/urls.json", (req, res) => {
   res.json(urlDatabase);
 });
+
+//application listening on Port 8080 (const PORT declared at top)
 
 app.listen(PORT, function(){
   console.log("Example app listening on port" + PORT);
